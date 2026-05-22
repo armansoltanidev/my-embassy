@@ -41,7 +41,11 @@ export function MailSidebar() {
   const [selectedAccount, setSelectedAccount] = React.useState(accounts[0]);
 
   return (
-    <Sidebar collapsible="icon" className="absolute inset-y-0 h-full **:data-[sidebar=sidebar]:bg-background">
+    <Sidebar
+      side="right"
+      collapsible="icon"
+      className="absolute inset-y-0 h-full **:data-[sidebar=sidebar]:bg-background"
+    >
       <SidebarHeader className="gap-3 py-3 pb-1">
         <div className="flex items-center justify-between">
           {isCollapsed ? (
