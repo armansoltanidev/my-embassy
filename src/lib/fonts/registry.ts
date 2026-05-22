@@ -17,6 +17,7 @@ import {
   Roboto,
   Roboto_Slab,
 } from "next/font/google";
+import localFont from "next/font/local";
 
 import { GeistPixelSquare } from "geist/font/pixel";
 
@@ -107,6 +108,29 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
 });
 
+const yekanBakhFaNum = localFont({
+  variable: "--font-yekan-bakh-fa-num",
+  display: "swap",
+  src: [
+    { path: "./YekanBakhFaNum-Thin.woff2", weight: "100", style: "normal" },
+    { path: "./YekanBakhFaNum-Light.woff2", weight: "300", style: "normal" },
+    { path: "./YekanBakhFaNum-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./YekanBakhFaNum-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "./YekanBakhFaNum-Bold.woff2", weight: "700", style: "normal" },
+    {
+      path: "./YekanBakhFaNum-ExtraBold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    { path: "./YekanBakhFaNum-Black.woff2", weight: "900", style: "normal" },
+    {
+      path: "./YekanBakhFaNum-ExtraBlack.woff2",
+      weight: "950",
+      style: "normal",
+    },
+  ],
+});
+
 export const fontRegistry = {
   geist: {
     label: "Geist",
@@ -179,6 +203,10 @@ export const fontRegistry = {
   playfairDisplay: {
     label: "Playfair Display",
     font: playfairDisplay,
+  },
+  yekanBakhFaNum: {
+    label: "Yekan Bakh Fa Num",
+    font: yekanBakhFaNum,
   },
 } as const;
 

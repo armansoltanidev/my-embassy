@@ -3,12 +3,12 @@ import packageJson from "../../package.json";
 const currentYear = new Date().getFullYear();
 
 export const APP_CONFIG = {
-  name: "Studio Admin",
+  name: "سفارت من",
   version: packageJson.version,
-  copyright: `© ${currentYear}, Studio Admin.`,
+  copyright: `© ${currentYear}, My Embassy. All rights reserved.`,
   meta: {
-    title: "Studio Admin - Modern Next.js Dashboard Starter Template",
+    title: "سفارت من",
     description:
-      "Studio Admin is a modern, open-source dashboard starter template built with Next.js 16, Tailwind CSS v4, and shadcn/ui. Perfect for SaaS apps, admin panels, and internal tools—fully customizable and production-ready.",
+      "سفارت من یک پلتفرم مدیریت نوبت سفارت است که به شما کمک می‌کند تا به راحتی نوبت‌های سفارت را رزرو و مدیریت کنید. با استفاده از این پلتفرم، می‌توانید به سرعت نوبت‌های سفارت را پیدا کنید، رزرو کنید و تاریخ انقضای نوبت‌ها را پیگیری کنید.",
   },
 };

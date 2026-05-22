@@ -2,7 +2,7 @@ import { Archive, CircleHelp, File, Inbox, Keyboard, type LucideIcon, Send, Star
 import { siFigma, siGoogledocs, siGooglephotos } from "simple-icons";
 
 const arhamKhan = {
-  name: "Arham Khan",
+  name: "آرمان سلطانی",
   email: "hello@arhamkhnz.com",
 };
 

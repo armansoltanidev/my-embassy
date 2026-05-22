@@ -1,20 +1,15 @@
 import {
   Banknote,
-  Calendar,
   ChartBar,
   Fingerprint,
   Forklift,
   Gauge,
   GraduationCap,
-  Kanban,
   LayoutDashboard,
   ListTodo,
   Lock,
   type LucideIcon,
   Mail,
-  MessageSquare,
-  ReceiptText,
-  ShoppingBag,
   SquareArrowUpRight,
   Users,
 } from "lucide-react";
@@ -47,46 +42,41 @@ export interface NavGroup {
 export const sidebarItems: NavGroup[] = [
   {
     id: 1,
-    label: "Dashboards",
+    label: "داشبورد",
     items: [
       {
-        title: "Default",
+        title: "داشبورد",
         url: "/dashboard/default",
         icon: LayoutDashboard,
       },
       {
-        title: "CRM",
+        title: "گزارشات",
         url: "/dashboard/crm",
         icon: ChartBar,
       },
       {
-        title: "Finance",
+        title: "حسابداری",
         url: "/dashboard/finance",
         icon: Banknote,
       },
       {
-        title: "Analytics",
+        title: "آنالیر حساب ها",
         url: "/dashboard/analytics",
         icon: Gauge,
       },
       {
-        title: "Productivity",
+        title: "چک لیست",
         url: "/dashboard/productivity",
         icon: ListTodo,
       },
       {
-        title: "E-commerce",
-        url: "/dashboard/ecommerce",
-        icon: ShoppingBag,
-      },
-      {
-        title: "Academy",
+        title: "آموزش ها",
         url: "/dashboard/academy",
         icon: GraduationCap,
         isNew: true,
       },
       {
-        title: "Logistics",
+        title: "لجستیک",
         url: "/dashboard/logistics",
         icon: Forklift,
       },
@@ -94,50 +84,26 @@ export const sidebarItems: NavGroup[] = [
   },
   {
     id: 2,
-    label: "Pages",
+    label: "مدیریت",
     items: [
       {
-        title: "Email",
+        title: "ایمیل",
         url: "/dashboard/mail",
         icon: Mail,
       },
       {
-        title: "Chat",
-        url: "/dashboard/coming-soon",
-        icon: MessageSquare,
-        comingSoon: true,
-      },
-      {
-        title: "Calendar",
-        url: "/dashboard/coming-soon",
-        icon: Calendar,
-        comingSoon: true,
-      },
-      {
-        title: "Kanban",
-        url: "/dashboard/coming-soon",
-        icon: Kanban,
-        comingSoon: true,
-      },
-      {
-        title: "Invoice",
-        url: "/dashboard/coming-soon",
-        icon: ReceiptText,
-        comingSoon: true,
-      },
-      {
-        title: "Users",
+        title: "کاربران",
         url: "/dashboard/users",
         icon: Users,
       },
       {
-        title: "Roles",
+        title: "سطح دسترسی",
         url: "/dashboard/coming-soon",
         icon: Lock,
         comingSoon: true,
       },
       {
-        title: "Authentication",
+        title: "ثبت نام و ورود",
         url: "/auth",
         icon: Fingerprint,
         subItems: [
@@ -149,31 +115,30 @@ export const sidebarItems: NavGroup[] = [
       },
     ],
   },
-  {
-    id: 3,
-    label: "Legacy",
-    items: [
-      {
-        title: "Dashboards",
-        url: "/dashboard/default-v1",
-        subItems: [
-          { title: "Default V1", url: "/dashboard/default-v1" },
-          { title: "CRM V1", url: "/dashboard/crm-v1" },
-          { title: "Finance V1", url: "/dashboard/finance-v1" },
-          { title: "Analytics V1", url: "/dashboard/analytics-v1" },
-        ],
-      },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   label: "Legacy",
+  //   items: [
+  //     {
+  //       title: "Dashboards",
+  //       url: "/dashboard/default-v1",
+  //       subItems: [
+  //         { title: "Default V1", url: "/dashboard/default-v1" },
+  //         { title: "CRM V1", url: "/dashboard/crm-v1" },
+  //         { title: "Finance V1", url: "/dashboard/finance-v1" },
+  //         { title: "Analytics V1", url: "/dashboard/analytics-v1" },
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     id: 4,
-    label: "Misc",
+    label: "لینک های دیگر",
     items: [
       {
-        title: "Others",
+        title: "لینک های مفید",
         url: "/dashboard/coming-soon",
         icon: SquareArrowUpRight,
-        comingSoon: true,
       },
     ],
   },
