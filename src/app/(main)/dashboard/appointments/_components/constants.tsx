@@ -9,8 +9,8 @@ import {
   PlaneTakeoff,
 } from "lucide-react";
 
-import type { AppointmentFormValues } from "./schema";
-import type { AppointmentOption, WizardStep } from "./types";
+import type { AppointmentFormValues } from "../schema";
+import type { AppointmentOption, WizardStep } from "../types";
 
 export const WIZARD_STEPS: WizardStep[] = [
   { title: "اطلاعات هویتی", icon: <BookUserIcon className="size-4" /> },
