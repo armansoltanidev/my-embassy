@@ -1,4 +1,4 @@
-import { DollarSign, TrendingDown, TrendingUp, UserPlus, Users, Waves } from "lucide-react";
+import { DollarSign, LaptopMinimalCheck, Mail, TrendingUp, UserPlus } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,20 +10,17 @@ export function MetricCards() {
         <CardHeader>
           <CardTitle>
             <div className="flex size-7 items-center justify-center rounded-lg border bg-muted text-muted-foreground">
-              <DollarSign className="size-4" />
+              <LaptopMinimalCheck className="size-4" />
             </div>
           </CardTitle>
-          <CardDescription>Total Revenue</CardDescription>
+          <CardDescription>درخواست های بررسی نشده</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-1">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">$1,250.00</div>
-            <Badge>
-              <TrendingUp className="size-3" />
-              +12.5%
-            </Badge>
+            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">78</div>
+            <Badge>حاوی درخواست مهم</Badge>
           </div>
-          <p className="text-muted-foreground text-sm">Visitors for the last 6 months</p>
+          <p className="text-muted-foreground text-sm">تنها درخواست های بررسی نشده نمایش داده میشود</p>
         </CardContent>
       </Card>
 
@@ -34,17 +31,17 @@ export function MetricCards() {
               <UserPlus className="size-4" />
             </div>
           </CardTitle>
-          <CardDescription>New Customers</CardDescription>
+          <CardDescription>تعداد کارمندان فعال</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-1">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">1,234</div>
-            <Badge variant="destructive">
-              <TrendingDown className="size-3" />
-              -20%
+            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">23</div>
+            <Badge>
+              <TrendingUp className="size-3" />
+              امروز
             </Badge>
           </div>
-          <p className="text-muted-foreground text-sm">Acquisition needs attention</p>
+          <p className="text-muted-foreground text-sm">بررسی گزارشات کارکنان در قسمت گزارشات</p>
         </CardContent>
       </Card>
 
@@ -52,20 +49,16 @@ export function MetricCards() {
         <CardHeader>
           <CardTitle>
             <div className="flex size-7 items-center justify-center rounded-lg border bg-muted text-muted-foreground">
-              <Users className="size-4" />
+              <Mail className="size-4" />
             </div>
           </CardTitle>
-          <CardDescription>Active Accounts</CardDescription>
+          <CardDescription>ایمیل های دریافتی</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-1">
           <div className="flex flex-wrap items-center gap-2">
             <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">45,678</div>
-            <Badge>
-              <TrendingUp className="size-3" />
-              +12.5%
-            </Badge>
           </div>
-          <p className="text-muted-foreground text-sm">Engagement exceeds targets</p>
+          <p className="text-muted-foreground text-sm">تنها ایمیل ها خوانده نشده نمایش داده میشود</p>
         </CardContent>
       </Card>
 
@@ -73,20 +66,20 @@ export function MetricCards() {
         <CardHeader>
           <CardTitle>
             <div className="flex size-7 items-center justify-center rounded-lg border bg-muted text-muted-foreground">
-              <Waves className="size-4" />
+              <DollarSign className="size-4" />
             </div>
           </CardTitle>
-          <CardDescription>Growth Rate</CardDescription>
+          <CardDescription>درآمد روز جاری</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-1">
           <div className="flex flex-wrap items-center gap-2">
-            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">4.5%</div>
+            <div className="font-medium text-3xl tabular-nums leading-none tracking-tight">1,303,00 $</div>
             <Badge>
               <TrendingUp className="size-3" />
               +4.5%
             </Badge>
           </div>
-          <p className="text-muted-foreground text-sm">Meets growth projections</p>
+          <p className="text-muted-foreground text-sm">اطلاعات بیشتر در بخش گزارشات</p>
         </CardContent>
       </Card>
     </div>

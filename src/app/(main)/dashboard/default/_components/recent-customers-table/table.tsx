@@ -44,28 +44,26 @@ import { recentCustomersColumns } from "./columns";
 import type { RecentCustomerRow } from "./schema";
 
 const statusOptions = [
-  { value: "all", label: "All" },
-  { value: "Subscribed", label: "Subscribed" },
-  { value: "Inactive", label: "Inactive" },
-  { value: "Unsubscribed", label: "Unsubscribed" },
+  { value: "all", label: "همه" },
+  { value: "pending", label: "در انتظار" },
+  { value: "completed", label: "تکمیل شده" },
+  { value: "rejected", label: "رد شده" },
 ] as const;
 const billingOptions = [
-  { value: "all", label: "All" },
-  { value: "Paid", label: "Paid" },
-  { value: "Pending", label: "Pending" },
-  { value: "Overdue", label: "Overdue" },
-  { value: "Trial", label: "Trial" },
+  { value: "all", label: "همه" },
+  { value: "paid", label: "پرداخت شده" },
+  { value: "not_paid", label: "پرداخت نشده" },
 ] as const;
 const joinedDateOptions = [
-  { value: "all", label: "All time" },
-  { value: "30", label: "Last 30 days" },
-  { value: "90", label: "Last 90 days" },
+  { value: "all", label: "تمام زمان ها" },
+  { value: "30", label: "سی روز اخیر" },
+  { value: "90", label: "نود روز اخیر" },
 ] as const;
 const sortOptions = [
-  { value: "newest", label: "Newest first" },
-  { value: "oldest", label: "Oldest first" },
-  { value: "name-asc", label: "Name A-Z" },
-  { value: "name-desc", label: "Name Z-A" },
+  { value: "newest", label: "جدیدترین اول" },
+  { value: "oldest", label: "قدیمی ترین اول" },
+  { value: "name-asc", label: "نام A-Z" },
+  { value: "name-desc", label: "نام Z-A" },
 ] as const;
 const pageSizeItems = [10, 20, 30, 40, 50].map((pageSize) => ({
   value: `${pageSize}`,
@@ -75,7 +73,7 @@ const pageSizeItems = [10, 20, 30, 40, 50].map((pageSize) => ({
 export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [sorting, setSorting] = React.useState<SortingState>([{ id: "joined", desc: true }]);
+  const [sorting, setSorting] = React.useState<SortingState>([{ id: "createdAt", desc: true }]);
   const [columnVisibility] = React.useState<VisibilityState>({
     search: false,
     joinedWindow: false,
@@ -115,8 +113,8 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
     const currentSort = sorting[0];
 
     if (!currentSort) return "newest";
-    if (currentSort.id === "joined" && currentSort.desc) return "newest";
-    if (currentSort.id === "joined" && !currentSort.desc) return "oldest";
+    if (currentSort.id === "createdAt" && currentSort.desc) return "newest";
+    if (currentSort.id === "createdAt" && !currentSort.desc) return "oldest";
     if (currentSort.id === "name" && !currentSort.desc) return "name-asc";
     if (currentSort.id === "name" && currentSort.desc) return "name-desc";
 
@@ -131,7 +129,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               className="h-7 rounded-[min(var(--radius-md),12px)] pl-8"
-              placeholder="Search customers..."
+              placeholder="جستجوی شهروندان..."
               value={searchQuery}
               onChange={(event) => {
                 table.getColumn("search")?.setFilterValue(event.target.value || undefined);
@@ -142,7 +140,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
               <UsersRound />
-              Status
+              وضعیت
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-35" align="start">
               <DropdownMenuRadioGroup
@@ -163,7 +161,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
               <CalendarDays />
-              Joined date
+              تاریخ ثبت
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40" align="start">
               <DropdownMenuRadioGroup
@@ -186,7 +184,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
               <CreditCard />
-              Billing
+              صورتحساب
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuRadioGroup
@@ -207,7 +205,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
               <ArrowUpDown />
-              Sort
+              مرتب‌سازی
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuRadioGroup
@@ -215,12 +213,12 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
                 onValueChange={(value) => {
                   const nextSorting: SortingState =
                     value === "oldest"
-                      ? [{ id: "joined", desc: false }]
+                      ? [{ id: "createdAt", desc: false }]
                       : value === "name-asc"
                         ? [{ id: "name", desc: false }]
                         : value === "name-desc"
                           ? [{ id: "name", desc: true }]
-                          : [{ id: "joined", desc: true }];
+                          : [{ id: "createdAt", desc: true }];
 
                   table.setSorting(nextSorting);
                   table.setPageIndex(0);
@@ -243,7 +241,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} colSpan={header.colSpan} className="h-11 p-3 font-medium">
+                  <TableHead key={header.id} colSpan={header.colSpan} className="h-11 p-3 text-right font-medium">
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
@@ -264,7 +262,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             ) : (
               <TableRow>
                 <TableCell colSpan={table.getVisibleLeafColumns().length} className="h-24 text-center">
-                  No results.
+                  نتیجه ای یافت نشد.
                 </TableCell>
               </TableRow>
             )}
@@ -274,13 +272,13 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
 
       <div className="flex items-center justify-between px-1">
         <div className="hidden flex-1 text-muted-foreground text-sm lg:flex">
-          {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s)
-          selected.
+          {table.getFilteredSelectedRowModel().rows.length} سطر از {table.getFilteredRowModel().rows.length} انتخاب شده
+          است.
         </div>
         <div className="flex w-full items-center gap-8 lg:w-fit">
           <div className="hidden items-center gap-2 lg:flex">
             <Label htmlFor="recent-customers-rows-per-page" className="font-medium text-sm">
-              Rows per page
+              ردیف‌ها در هر صفحه
             </Label>
             <Select
               value={`${table.getState().pagination.pageSize}`}
@@ -304,7 +302,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
             </Select>
           </div>
           <div className="flex w-fit items-center justify-center font-medium text-sm">
-            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+            صفحه {table.getState().pagination.pageIndex + 1} از {table.getPageCount()}
           </div>
           <div className="ml-auto flex items-center gap-2 lg:ml-0">
             <Button
@@ -315,7 +313,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               disabled={!table.getCanPreviousPage()}
             >
               <span className="sr-only">Go to first page</span>
-              <ChevronsLeft className="size-4" />
+              <ChevronsRight className="size-4" />
             </Button>
             <Button
               variant="outline"
@@ -325,7 +323,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               disabled={!table.getCanPreviousPage()}
             >
               <span className="sr-only">Go to previous page</span>
-              <ChevronLeft className="size-4" />
+              <ChevronRight className="size-4" />
             </Button>
             <Button
               variant="outline"
@@ -335,7 +333,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               disabled={!table.getCanNextPage()}
             >
               <span className="sr-only">Go to next page</span>
-              <ChevronRight className="size-4" />
+              <ChevronLeft className="size-4" />
             </Button>
             <Button
               variant="outline"
@@ -345,7 +343,7 @@ export function RecentCustomersTable({ data }: { data: RecentCustomerRow[] }) {
               disabled={!table.getCanNextPage()}
             >
               <span className="sr-only">Go to last page</span>
-              <ChevronsRight className="size-4" />
+              <ChevronsLeft className="size-4" />
             </Button>
           </div>
         </div>

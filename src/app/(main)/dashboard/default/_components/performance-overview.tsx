@@ -216,35 +216,35 @@ const chartData = chartValues.map((point, index) => ({
 
 const chartConfig = {
   newCustomers: {
-    label: "New Customers",
+    label: "درخواست های جدید",
     color: "var(--chart-1)",
   },
   activeAccounts: {
-    label: "Active Accounts",
+    label: "درخواست های فعال",
     color: "var(--chart-2)",
   },
   returningUsers: {
-    label: "Returning Users",
+    label: "درخواست رد شده",
     color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
 
-const performancePeriodItems = [{ value: "quarter", label: "3 months" }] as const;
+const performancePeriodItems = [{ value: "quarter", label: "سه ماهه" }] as const;
 
 const performanceSegmentItems = [
-  { value: "all", label: "All segments" },
-  { value: "paid", label: "Paid" },
-  { value: "organic", label: "Organic" },
+  { value: "all", label: "تمام درخواست ها" },
+  { value: "paid", label: "پرداخت شده ها" },
+  { value: "not_paied", label: "پرداخت نشده ها" },
 ] as const;
 
 export function PerformanceOverview() {
   return (
     <Card className="@container/card">
       <CardHeader>
-        <CardTitle className="leading-none">Customer Activity</CardTitle>
+        <CardTitle className="leading-none">نمودار نمایش درخواست ها</CardTitle>
         <CardDescription>
-          <span className="@[540px]/card:block hidden">Customer activity for the last 3 months</span>
-          <span className="@[540px]/card:hidden">Last 3 months</span>
+          <span className="@[540px]/card:block hidden">درخواست های سه ماهه اخیر به تفکیک نوع درخواست</span>
+          <span className="@[540px]/card:hidden">سه ماهه آخر</span>
         </CardDescription>
         <CardAction className="flex items-center gap-2">
           <Select defaultValue="quarter" items={performancePeriodItems}>
@@ -253,7 +253,7 @@ export function PerformanceOverview() {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Period</SelectLabel>
+                <SelectLabel>بازه زمانی</SelectLabel>
                 {performancePeriodItems.map((item) => (
                   <SelectItem key={item.value} value={item.value}>
                     {item.label}
@@ -265,11 +265,11 @@ export function PerformanceOverview() {
 
           <Select defaultValue="all" items={performanceSegmentItems}>
             <SelectTrigger size="sm" className="w-32">
-              <SelectValue placeholder="All segments" />
+              <SelectValue placeholder="تمامی درخواست ها" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Segments</SelectLabel>
+                <SelectLabel>انتخاب</SelectLabel>
                 {performanceSegmentItems.map((item) => (
                   <SelectItem key={item.value} value={item.value}>
                     {item.label}
@@ -280,7 +280,7 @@ export function PerformanceOverview() {
           </Select>
 
           <Button variant="outline" size="sm">
-            View report
+            نمایش گزارش
           </Button>
         </CardAction>
       </CardHeader>

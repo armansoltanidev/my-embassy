@@ -112,7 +112,7 @@ export function LayoutControls() {
 
   return (
     <Popover>
-      <PopoverTrigger render={<Button size="icon" />}>
+      <PopoverTrigger render={<Button size="icon" variant="ghost" />}>
         <Settings />
       </PopoverTrigger>
       <PopoverContent align="end">

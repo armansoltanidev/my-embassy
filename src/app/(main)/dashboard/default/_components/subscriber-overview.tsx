@@ -15,16 +15,15 @@ export function SubscriberOverview() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="leading-none">18,426 Customers</CardTitle>
-        <CardDescription>Recent customer records with plan, billing, status, and signup activity.</CardDescription>
+        <CardTitle className="leading-none">جستجو در 123</CardTitle>
+        <CardDescription>در این بخش می‌توانید درخواست‌های اخیر را مشاهده و مدیریت کنید.</CardDescription>
         <CardAction>
           <Button variant="outline" size="sm">
+            دریافت خروجی
             <Download />
-            Export
           </Button>
         </CardAction>
       </CardHeader>
-
       <CardContent className="pt-0">
         <RecentCustomersTable data={customers} />
       </CardContent>
