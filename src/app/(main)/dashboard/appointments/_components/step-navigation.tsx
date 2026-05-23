@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { StepperIndicator, StepperItem, StepperNav, StepperTitle, StepperTrigger } from "@/components/ui/stepper";
 
-import type { WizardStep } from "./types";
+import type { WizardStep } from "../types";
 
 interface StepNavigationProps {
   steps: WizardStep[];
