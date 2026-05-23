@@ -24,14 +24,22 @@ type FormFieldProps<
   render: (props: {
     field: ControllerRenderProps<TFieldValues, TName>;
     fieldState: any;
-  }) => React.ReactNode;
+  }) => React.ReactElement;
 };
 
 function FormField<
   TFieldValues extends FieldValues,
   TName extends Path<TFieldValues>,
 >({ control, name, render }: FormFieldProps<TFieldValues, TName>) {
-  return <Controller control={control} name={name} render={render} />;
+  return (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field, fieldState, formState }) =>
+        render({ field, fieldState })
+      }
+    />
+  );
 }
 
 function FormItem({ className, ...props }: React.ComponentProps<"div">) {
