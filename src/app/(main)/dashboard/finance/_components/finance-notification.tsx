@@ -10,12 +10,12 @@ export function FinanceNotification() {
         <TrendingUp />
       </ItemMedia>
       <ItemContent>
-        <ItemTitle>Credit score updated</ItemTitle>
-        <ItemDescription>Your score increased by 14 points to 782.</ItemDescription>
+        <ItemTitle>لیست تعرفه ها بروزرسانی شد</ItemTitle>
+        <ItemDescription>لیست تعرفه ها بروزسانی شد و در خدمات در دسترس قرار گرفت</ItemDescription>
       </ItemContent>
       <ItemActions>
         <Button size="sm" variant="outline">
-          View details
+          مشاهده تعرفه ها
         </Button>
       </ItemActions>
     </Item>

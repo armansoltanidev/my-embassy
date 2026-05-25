@@ -148,7 +148,7 @@ export const usersColumns: ColumnDef<UserRow>[] = [
   },
   {
     accessorKey: "name",
-    header: "User",
+    header: "کاربر",
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
         <AvatarCell name={row.original.name} lastActive={row.original.lastActive} />
@@ -161,7 +161,7 @@ export const usersColumns: ColumnDef<UserRow>[] = [
   },
   {
     accessorKey: "role",
-    header: "Role / Team",
+    header: "نقش",
     filterFn: "equalsString",
     cell: ({ row }) => <RoleCell role={row.original.role} team={row.original.team} />,
   },
@@ -173,25 +173,25 @@ export const usersColumns: ColumnDef<UserRow>[] = [
   },
   {
     accessorKey: "workspace",
-    header: "Workspace",
+    header: "سطح دسترسی",
     filterFn: "arrIncludes",
     cell: ({ row }) => <WorkspaceCell workspaces={row.original.workspace} />,
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "وضعیت",
     filterFn: "equalsString",
     cell: ({ row }) => <StatusBadge status={row.original.status} />,
   },
   {
     id: "joinedDate",
     accessorFn: (row) => parse(row.joinedDate, "dd MMM yyyy, h:mm a", new Date()).getTime(),
-    header: "Joined date",
+    header: "تاریخ ثبت نام",
     cell: ({ row }) => <div className="text-foreground text-sm">{row.original.joinedDate}</div>,
   },
   {
     id: "actions",
-    header: () => <div className="text-right">Actions</div>,
+    header: () => <div className="text-right">عملیات</div>,
     cell: ({ row }) => (
       <div className="text-right">
         <DropdownMenu>

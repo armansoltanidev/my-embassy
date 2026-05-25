@@ -19,30 +19,30 @@ export default function Page() {
   return (
     <div className="flex flex-col gap-4">
       <div className="space-y-1">
-        <h1 className="text-3xl tracking-tight">Personal Finances</h1>
+        <h1 className="text-2xl tracking-tight">گزارشات مالی</h1>
         <p className="text-muted-foreground text-sm">{formattedDate}</p>
       </div>
 
       <Tabs defaultValue="30-days" className="flex flex-col gap-4">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <TabsList variant="line">
-            <TabsTrigger value="30-days">Dashboard</TabsTrigger>
-            <TabsTrigger value="12-months">Accounts</TabsTrigger>
-            <TabsTrigger value="custom">Transactions</TabsTrigger>
+            <TabsTrigger value="30-days">داشبورد</TabsTrigger>
+            <TabsTrigger value="12-months">حساب ها</TabsTrigger>
+            <TabsTrigger value="custom">تراکنش ها</TabsTrigger>
           </TabsList>
 
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-1.5 text-muted-foreground text-xs">
               <RotateCw className="size-4" />
-              <span>Updated 5 min ago</span>
+              <span>آخرین بروزرسانی 5 دقیقه پیش</span>
             </div>
             <Button size="sm" variant="outline">
               <Settings2 />
-              Settings
+              تنظیمات
             </Button>
             <Button size="sm" variant="outline">
               <Download data-icon="inline-start" />
-              Export
+              دریافت خروجی
             </Button>
           </div>
         </div>
@@ -68,17 +68,17 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
-            <div className="xl:col-span-4">
+          {/* <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
+            <div className="xl:col-span-2">
               <Wallet />
             </div>
             <div className="xl:col-span-4">
               <UpcomingTransactions />
             </div>
-            <div className="xl:col-span-4">
+            <div className="xl:col-span-6">
               <QuickActions />
             </div>
-          </div>
+          </div> */}
         </TabsContent>
 
         <TabsContent value="12-months">

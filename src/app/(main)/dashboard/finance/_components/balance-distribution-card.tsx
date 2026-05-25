@@ -18,25 +18,25 @@ const balanceData: {
   percentage: number;
 }[] = [
   {
-    account: "Main Wallet",
+    account: "صدور پاسپورت",
     amount: 122_540,
     key: "main",
     percentage: 52.2,
   },
   {
-    account: "Savings Account",
+    account: "ثبت نام حج",
     amount: 48_320,
     key: "savings",
     percentage: 20.6,
   },
   {
-    account: "Investment Account",
+    account: "تایید مدارک",
     amount: 36_780,
     key: "investment",
     percentage: 15.7,
   },
   {
-    account: "Reserve Account",
+    account: "نکاح خط",
     amount: 27_256,
     key: "reserve",
     percentage: 11.5,
@@ -66,14 +66,8 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const currencies = {
-  EUR: {
-    label: "Euro Balance",
-  },
-  GBP: {
-    label: "GBP Balance",
-  },
   USD: {
-    label: "USD Balance",
+    label: "دلار آمریکا",
   },
 } as const;
 
@@ -97,7 +91,7 @@ export function BalanceDistributionCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-normal">Account Allocation</CardTitle>
+        <CardTitle className="font-normal">درآمد به تفکیک خدمات</CardTitle>
         <CardAction>
           <Select onValueChange={(value) => setCurrency(value as Currency)} value={currency}>
             <SelectTrigger className="w-36" size="sm">
@@ -142,14 +136,17 @@ export function BalanceDistributionCard() {
                   return (
                     <text dominantBaseline="middle" textAnchor="middle" x={viewBox.cx} y={viewBox.cy}>
                       <tspan className="fill-muted-foreground text-xs" x={viewBox.cx} y={(viewBox.cy ?? 0) - 8}>
-                        Total
+                        مجموع
                       </tspan>
                       <tspan
                         className="fill-foreground font-heading font-medium text-lg tabular-nums"
                         x={viewBox.cx}
                         y={(viewBox.cy ?? 0) + 14}
                       >
-                        {formatCurrency(totalBalance, { currency, noDecimals: true })}
+                        {formatCurrency(totalBalance, {
+                          currency,
+                          noDecimals: true,
+                        })}
                       </tspan>
                     </text>
                   );

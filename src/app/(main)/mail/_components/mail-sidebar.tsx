@@ -114,7 +114,7 @@ export function MailSidebar() {
 
         <Button size={isCollapsed ? "icon-sm" : "sm"} variant="outline" className="group-data-[state=expanded]:w-full">
           <PenLine data-icon="inline-start" />
-          <span className="group-data-[state=collapsed]:hidden">New email</span>
+          <span className="group-data-[state=collapsed]:hidden">ایمیل جدید</span>
         </Button>
       </SidebarHeader>
       <SidebarContent>

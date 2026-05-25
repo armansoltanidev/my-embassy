@@ -79,10 +79,8 @@ export function Users({ users }: { users: UserRow[] }) {
   return (
     <Card>
       <CardHeader className="border-b has-data-[slot=card-action]:grid-cols-1 md:has-data-[slot=card-action]:grid-cols-[1fr_auto]">
-        <CardTitle className="text-xl leading-none">Users</CardTitle>
-        <CardDescription className="max-w-sm leading-snug">
-          Manage your organization members and their access.
-        </CardDescription>
+        <CardTitle className="text-xl leading-none">مدیریت کاربران</CardTitle>
+        <CardDescription className="max-w-sm leading-snug">کارمندان و سطح دسترسی آن ها را مدیریت کنید.</CardDescription>
         <CardAction className="col-start-1 row-start-auto flex w-full flex-wrap justify-start gap-2 justify-self-stretch md:col-start-2 md:row-span-2 md:row-start-1 md:w-auto md:flex-nowrap md:justify-end md:justify-self-end">
           <InputGroup className="h-7 w-full md:w-64">
             <InputGroupAddon align="inline-start">
@@ -90,7 +88,7 @@ export function Users({ users }: { users: UserRow[] }) {
             </InputGroupAddon>
             <InputGroupInput
               className="h-7"
-              placeholder="Search users..."
+              placeholder="جستجوی کاربر..."
               value={searchQuery}
               onChange={(event) => {
                 table.getColumn("search")?.setFilterValue(event.target.value || undefined);
@@ -102,16 +100,17 @@ export function Users({ users }: { users: UserRow[] }) {
             </InputGroupAddon>
           </InputGroup>
           <Button variant="outline" size="sm">
-            <SlidersHorizontal /> Hide
+            <SlidersHorizontal /> پنهان
           </Button>
           <Button variant="outline" size="sm">
-            <Cog /> Customize
+            <Cog /> شخصی سازی
           </Button>
           <Button variant="outline" size="sm">
-            <Download /> Export
+            <Download /> گرفتن خروجی
           </Button>
           <Button size="sm">
-            <Plus /> Add User
+            <Plus />
+            ااضافه کردن کاربر
           </Button>
         </CardAction>
       </CardHeader>
@@ -120,7 +119,7 @@ export function Users({ users }: { users: UserRow[] }) {
           <div className="flex flex-wrap items-center gap-3">
             <Select value={roleFilter} onValueChange={(value) => setColumnSelectFilter("role", value)}>
               <SelectTrigger size="sm">
-                <span className="text-muted-foreground">Role:</span>
+                <span className="text-muted-foreground">نقش:</span>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent align="start" alignItemWithTrigger={false}>
@@ -136,7 +135,7 @@ export function Users({ users }: { users: UserRow[] }) {
 
             <Select value={teamFilter} onValueChange={(value) => setColumnSelectFilter("team", value)}>
               <SelectTrigger size="sm">
-                <span className="text-muted-foreground">Team:</span>
+                <span className="text-muted-foreground">تیم:</span>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent align="start" alignItemWithTrigger={false}>
@@ -152,7 +151,7 @@ export function Users({ users }: { users: UserRow[] }) {
 
             <Select value={statusFilter} onValueChange={(value) => setColumnSelectFilter("status", value)}>
               <SelectTrigger size="sm">
-                <span className="text-muted-foreground">Status:</span>
+                <span className="text-muted-foreground">وضعیت:</span>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent align="start" alignItemWithTrigger={false}>
@@ -169,7 +168,7 @@ export function Users({ users }: { users: UserRow[] }) {
 
           <Select value={workspaceFilter} onValueChange={(value) => setColumnSelectFilter("workspace", value)}>
             <SelectTrigger size="sm">
-              <span className="text-muted-foreground">Workspace:</span>
+              <span className="text-muted-foreground">محیط کاری:</span>
               <SelectValue />
             </SelectTrigger>
             <SelectContent align="end" alignItemWithTrigger={false}>
@@ -185,7 +184,7 @@ export function Users({ users }: { users: UserRow[] }) {
         </div>
 
         <div className="flex items-center justify-between gap-3 px-4">
-          <div className="text-muted-foreground text-sm tabular-nums">{selectedCount} selected</div>
+          <div className="text-muted-foreground text-sm tabular-nums">{selectedCount} انتخاب شده</div>
 
           <Tabs defaultValue="list">
             <TabsList>

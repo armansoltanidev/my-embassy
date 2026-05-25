@@ -411,14 +411,14 @@ export const mailNavigation: MailNavigation = {
   navMain: [
     {
       id: "inbox",
-      title: "Inbox",
+      title: "صندوق ورودی",
       label: "18",
       icon: Inbox,
       isActive: true,
     },
     {
       id: "priority",
-      title: "Priority",
+      title: "مهم",
       label: "3",
       icon: Star,
       isActive: false,
@@ -427,26 +427,26 @@ export const mailNavigation: MailNavigation = {
   folders: [
     {
       id: "drafts",
-      title: "Drafts",
+      title: "پیش نویس ها",
       label: "9",
       icon: File,
       isActive: false,
     },
     {
       id: "sent",
-      title: "Sent",
+      title: "ارسالی ها",
       icon: Send,
       isActive: false,
     },
     {
       id: "archive",
-      title: "Archive",
+      title: "آرشیو ها",
       icon: Archive,
       isActive: false,
     },
     {
       id: "trash",
-      title: "Trash",
+      title: "حذف شده ها",
       icon: Trash2,
       isActive: false,
     },
@@ -454,13 +454,13 @@ export const mailNavigation: MailNavigation = {
   navFooter: [
     {
       id: "help-feedback",
-      title: "Help & feedback",
+      title: "کمک و بازخورد",
       icon: CircleHelp,
       isActive: false,
     },
     {
       id: "keyboard-shortcuts",
-      title: "Keyboard shortcuts",
+      title: "میانبر ها",
       icon: Keyboard,
       isActive: false,
     },

@@ -25,7 +25,7 @@ export function MailInbox({ mails, onSelectMail }: MailInboxProps) {
         <div className="flex items-center">
           <SidebarTrigger />
           <Separator orientation="vertical" className="mr-2 ml-1 h-4 data-vertical:self-center" />
-          <h1 className="font-medium text-xl leading-none">Inbox</h1>
+          <h1 className="font-medium text-xl leading-none">صندوق ورودی</h1>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon-sm" aria-label="Filter inbox">
@@ -58,12 +58,12 @@ export function MailInbox({ mails, onSelectMail }: MailInboxProps) {
           groups={[
             {
               id: "pinned",
-              title: "Pinned",
+              title: "پین شده ها",
               items: pinnedMails,
             },
             {
               id: "inbox",
-              title: "Inbox",
+              title: "صندوق ورودی",
               items: unpinnedMails,
             },
           ]}

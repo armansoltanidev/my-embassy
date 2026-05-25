@@ -44,7 +44,7 @@ export function UsersTable({ table }: { table: TableType<UserRow> }) {
   return (
     <div className="flex flex-1 flex-col gap-4">
       <div>
-        <Table className="**:data-[slot='table-cell']:px-4 **:data-[slot='table-head']:px-4">
+        <Table className="**:data-[slot='table-cell']:px-4 **:data-[slot='table-head']:px-4 **:data-[slot='table-head']:text-right">
           <TableHeader className="[&_tr]:border-t">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -88,7 +88,7 @@ export function UsersTable({ table }: { table: TableType<UserRow> }) {
       <div className="flex items-center justify-between px-4">
         <div className="flex items-center gap-4 text-muted-foreground text-sm">
           <div className="flex items-center gap-2">
-            <span>Rows per page</span>
+            <span>ردیف در هر صفحه</span>
             <Select
               value={`${table.getState().pagination.pageSize}`}
               onValueChange={(value) => table.setPageSize(Number(value))}
@@ -108,7 +108,7 @@ export function UsersTable({ table }: { table: TableType<UserRow> }) {
             </Select>
           </div>
           <span>
-            Page {currentPage} of {pageCount}
+            صفحه {currentPage} از {pageCount}
           </span>
         </div>
 
