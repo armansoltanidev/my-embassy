@@ -50,6 +50,11 @@ export const sidebarItems: NavGroup[] = [
         icon: LayoutDashboard,
       },
       {
+        title: "مدیریت درخواست ها",
+        url: "/dashboard/logistics",
+        icon: Forklift,
+      },
+      {
         title: "گزارشات",
         url: "/dashboard/crm",
         icon: ChartBar,
@@ -74,11 +79,6 @@ export const sidebarItems: NavGroup[] = [
         url: "/dashboard/academy",
         icon: GraduationCap,
         isNew: true,
-      },
-      {
-        title: "لجستیک",
-        url: "/dashboard/logistics",
-        icon: Forklift,
       },
     ],
   },
