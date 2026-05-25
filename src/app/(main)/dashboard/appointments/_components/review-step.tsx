@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
 import type { AppointmentFormValues } from "../schema";
-import { GENDER_LABELS, ID_DOCUMENT_LABELS } from "./constants";
+import { APPOINTMENT_TYPE_LABELS, GENDER_LABELS, ID_DOCUMENT_LABELS } from "./constants";
 
 interface ReviewField {
   label: string;
@@ -23,6 +23,10 @@ export function ReviewStep() {
       label: "نوع مدرک",
       value: ID_DOCUMENT_LABELS[values.idDocumentType] ?? "-",
     },
+    {
+      label: "نوع نوبت",
+      value: APPOINTMENT_TYPE_LABELS[values.appointmentType] ?? "-",
+    },
     { label: "ایمیل", value: values.email },
     { label: "شماره تلفن", value: values.phone },
   ];
@@ -33,7 +37,7 @@ export function ReviewStep() {
       <dl className="grid gap-4 sm:grid-cols-2">
         {reviewFields.map(({ label, value }) => (
           <div key={label}>
-            <dt className="text-xs uppercase text-muted-foreground">{label}</dt>
+            <dt className="text-muted-foreground text-xs uppercase">{label}</dt>
             <dd className="mt-1 font-medium text-foreground">{value || "-"}</dd>
           </div>
         ))}

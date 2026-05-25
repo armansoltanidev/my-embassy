@@ -15,7 +15,7 @@ import type { AppointmentOption, WizardStep } from "../types";
 export const WIZARD_STEPS: WizardStep[] = [
   { title: "اطلاعات هویتی", icon: <BookUserIcon className="size-4" /> },
   { title: "انتخاب نوع نوبت", icon: <CreditCardIcon className="size-4" /> },
-  { title: "راه ارتباطی", icon: <LockIcon className="size-4" /> },
+  { title: "مشخصات تماس", icon: <LockIcon className="size-4" /> },
   { title: "بازبینی", icon: <CheckIcon className="size-4" /> },
 ];
 
@@ -34,7 +34,7 @@ export const APPOINTMENT_OPTIONS: AppointmentOption[] = [
     description: "صدور تثبیت هویت جهت ارائه به ارگان‌ها و مراجع قضایی یا انتظامی",
     value: "identity_verification",
     icon: <IdCard aria-hidden className="size-4" />,
-    disabled: true,
+    disabled: false,
   },
   {
     id: 3,
@@ -69,6 +69,14 @@ export const STEP_FIELD_MAP: Array<Array<keyof AppointmentFormValues>> = [
   [],
 ];
 
+export const APPOINTMENT_TYPE_LABELS: Record<string, string> = {
+  passport_issuance: "درخواست صدور یا تمدید پاسپورت",
+  identity_verification: "درخواست صدور تثبیت هویت",
+  marriage_document: "درخواست عقدنامه (نکاح خط)",
+  passport_conversion: "طرح تبدیل پاسپورت دست‌نویس به الکترونیکی",
+  hajj_registration: "ثبت‌نام حج",
+};
+
 export const GENDER_LABELS: Record<string, string> = {
   male: "مرد",
   female: "زن",
@@ -78,4 +86,5 @@ export const ID_DOCUMENT_LABELS: Record<string, string> = {
   passport: "پاسپورت اقامت",
   amayesh_card: "کارت آمایش",
   residence_booklet: "دفترچه اقامت",
+  tazkira: "تذکره",
 };

@@ -14,7 +14,7 @@ import { appointmentFormSchema } from "../schema";
 import type { AppointmentFormValues } from "../types";
 import { AppointmentTypeStep } from "./appointment-step";
 import { STEP_FIELD_MAP, WIZARD_STEPS } from "./constants";
-import { ContactStep } from "./contact-step";
+import { DynamicFormStep } from "./dynamic-form-step";
 import { IdentityStep } from "./identity-step";
 import { ReviewStep } from "./review-step";
 import { StepNavigation } from "./step-navigation";
@@ -88,7 +88,7 @@ export function AppointmentForm() {
                   <AppointmentTypeStep />
                 </StepperContent>
                 <StepperContent value={3}>
-                  <ContactStep />
+                  <DynamicFormStep />
                 </StepperContent>
                 <StepperContent value={4}>
                   <ReviewStep />
