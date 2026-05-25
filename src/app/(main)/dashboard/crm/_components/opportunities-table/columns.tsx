@@ -52,18 +52,18 @@ export const opportunitiesColumns: ColumnDef<OpportunityRow>[] = [
   },
   {
     accessorKey: "id",
-    header: "ID",
+    header: "شماره درخواست",
     cell: ({ row }) => <div className="text-sm tracking-tight">{row.original.id}</div>,
     enableHiding: false,
   },
   {
     accessorKey: "account",
-    header: "Account",
+    header: "نوع نوبت",
     cell: ({ row }) => <div className="font-medium text-sm">{row.original.account}</div>,
   },
   {
     accessorKey: "stage",
-    header: "Stage",
+    header: "وضعیت",
     cell: ({ row }) => (
       <Badge variant="outline" className="rounded-full px-2.5">
         {row.original.stage}

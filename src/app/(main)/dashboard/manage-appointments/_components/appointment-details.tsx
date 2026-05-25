@@ -209,7 +209,7 @@ export function RequestDetails({ request }: RequestDetailsProps) {
   }
 
   return (
-    <div className="grid h-full min-h-0 grid-rows-[320px_1fr] overflow-hidden lg:grid-rows-[420px_1fr]">
+    <div className="grid bg-card rounded-lg h-full min-h-0 grid-rows-[320px_1fr] overflow-hidden lg:grid-rows-[420px_1fr]">
       <div className="min-h-0 overflow-hidden" />
 
       <div className="min-h-0 overflow-hidden">

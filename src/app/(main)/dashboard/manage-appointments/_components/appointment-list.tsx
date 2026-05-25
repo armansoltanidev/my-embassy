@@ -78,7 +78,7 @@ function AppointmentCard({ request, active, onSelectAppointment }: AppointmentCa
 
 export function RequestList({ requests, selectedAppointment, onSelectAppointment }: AppointmentListProps) {
   return (
-    <Card className="h-full rounded-none ring-0">
+    <Card className="h-full rounded-lg ring-0">
       <CardHeader>
         <CardTitle className="font-normal text-xl">لیست درخواست ها</CardTitle>
         <CardAction>

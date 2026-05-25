@@ -101,15 +101,13 @@ export function OpportunitiesSection() {
     <section>
       <Card>
         <CardHeader>
-          <CardTitle className="leading-none">Recent Opportunities</CardTitle>
-          <CardDescription>
-            Track qualified leads moving through discovery, proposal, and closing stages.
-          </CardDescription>
+          <CardTitle className="leading-none">تمامی درخواست ها</CardTitle>
+          <CardDescription>تمامی درخواست ها با تمامی وضعیت ها اینجا نمایش داده میشوند</CardDescription>
           <CardAction>
             <div className="flex items-center gap-2">
               <Input
                 className="h-7 w-44 md:w-52"
-                placeholder="Search deals..."
+                placeholder="جستجوی درخواست..."
                 value={searchQuery}
                 onChange={(event) => {
                   table.setGlobalFilter(event.target.value || undefined);
@@ -166,7 +164,7 @@ export function OpportunitiesSection() {
         <CardContent className="flex flex-col gap-4 px-0">
           <div className="overflow-hidden">
             <Table className="**:data-[slot='table-cell']:px-4 **:data-[slot='table-head']:px-4 **:data-[slot='table-cell']:py-4">
-              <TableHeader className="border-t **:data-[slot='table-head']:h-11 **:data-[slot='table-head']:font-medium **:data-[slot='table-head']:text-foreground **:data-[slot='table-head']:text-sm">
+              <TableHeader className="border-t **:data-[slot='table-head']:h-11 **:data-[slot='table-head']:font-medium **:data-[slot='table-head']:text-foreground **:data-[slot='table-head']:text-sm **:data-[slot='table-head']:text-right">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id}>
                     {headerGroup.headers.map((header) => (

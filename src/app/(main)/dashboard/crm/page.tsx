@@ -1,3 +1,4 @@
+import { SubscriberOverview } from "../default/_components/subscriber-overview";
 import { KpiCards } from "./_components/kpi-cards";
 import { OpportunitiesSection } from "./_components/opportunities-section";
 import { PipelineActivity } from "./_components/pipeline-activity";
@@ -8,8 +9,9 @@ export default function Page() {
     <div className="flex flex-col gap-4 md:gap-6">
       <KpiCards />
       <PipelineActivity />
-      <TaskReminders />
-      <OpportunitiesSection />
+      {/* <TaskReminders /> */}
+      {/* <OpportunitiesSection /> */}
+      <SubscriberOverview />
     </div>
   );
 }
