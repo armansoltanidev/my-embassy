@@ -4,16 +4,16 @@ import * as React from "react";
 
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
+import { RequestDetails } from "./appointment-details";
+import { RequestList } from "./appointment-list";
 import { requestsData } from "./request-data";
-import { RequestDetails } from "./shipment-details";
-import { RequestList } from "./shipment-list";
 
-export function Logistics() {
+export function Appointments() {
   const [detailsOpen, setDetailsOpen] = React.useState(false);
   const [selectedRequestId, setselectedRequestId] = React.useState<string | null>(requestsData[0]?.id ?? null);
   const selectedRequest = requestsData.find((request) => request.id === selectedRequestId) ?? requestsData[0] ?? null;
 
-  function handleSelectShipment(requestId: string) {
+  function handleSelectRequest(requestId: string) {
     setselectedRequestId(requestId);
 
     if (window.innerWidth < 1024) {
@@ -30,8 +30,8 @@ export function Logistics() {
         <div className="h-full overflow-hidden">
           <RequestList
             requests={requestsData}
-            selectedShipmentId={selectedRequestId}
-            onSelectShipment={handleSelectShipment}
+            selectedAppointment={selectedRequestId}
+            onSelectAppointment={handleSelectRequest}
           />
         </div>
         <div className="hidden h-full overflow-hidden lg:block">
@@ -45,8 +45,8 @@ export function Logistics() {
           className="gap-0 p-0 data-[side=right]:w-full data-[side=right]:sm:max-w-none data-[side=right]:md:w-3/4"
         >
           <SheetHeader className="sr-only">
-            <SheetTitle>{selectedRequest ? `Shipment ${selectedRequest.id}` : "Shipment details"}</SheetTitle>
-            <SheetDescription>Selected shipment details and route map.</SheetDescription>
+            <SheetTitle>{selectedRequest ? `Request ${selectedRequest.id}` : "Request details"}</SheetTitle>
+            <SheetDescription>Selected Request details and do action.</SheetDescription>
           </SheetHeader>
           <RequestDetails request={selectedRequest} />
         </SheetContent>

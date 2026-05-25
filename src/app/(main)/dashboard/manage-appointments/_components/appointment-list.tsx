@@ -18,26 +18,26 @@ const statusLabels: Record<Requests["status"], string> = {
   rejected: "رد شده",
 };
 
-type ShipmentCardProps = {
+type AppointmentCardProps = {
   active?: boolean;
-  onSelectShipment: (shipmentId: Requests["id"]) => void;
+  onSelectAppointment: (appointmentId: Requests["id"]) => void;
   request: Requests;
 };
 
-type ShipmentListProps = {
-  onSelectShipment: (shipmentId: Requests["id"]) => void;
-  selectedShipmentId: Requests["id"] | null;
+type AppointmentListProps = {
+  onSelectAppointment: (appointmentId: Requests["id"]) => void;
+  selectedAppointment: Requests["id"] | null;
   requests: Requests[];
 };
 
-function ShipmentCard({ request, active, onSelectShipment }: ShipmentCardProps) {
+function AppointmentCard({ request, active, onSelectAppointment }: AppointmentCardProps) {
   return (
     <button
       type="button"
       aria-pressed={active}
       onClick={(event) => {
         event.currentTarget.blur();
-        onSelectShipment(request.id);
+        onSelectAppointment(request.id);
       }}
       className={cn(
         "flex w-full flex-col gap-4 rounded-xl border p-3 text-right transition-colors",
@@ -76,7 +76,7 @@ function ShipmentCard({ request, active, onSelectShipment }: ShipmentCardProps) 
   );
 }
 
-export function RequestList({ requests, selectedShipmentId, onSelectShipment }: ShipmentListProps) {
+export function RequestList({ requests, selectedAppointment, onSelectAppointment }: AppointmentListProps) {
   return (
     <Card className="h-full rounded-none ring-0">
       <CardHeader>
@@ -107,7 +107,7 @@ export function RequestList({ requests, selectedShipmentId, onSelectShipment }: 
 
         <div className="px-4">
           <InputGroup className="h-8">
-            <InputGroupInput className="h-8" aria-label="Search shipments" placeholder="جستجوی درخواست ها..." />
+            <InputGroupInput className="h-8" aria-label="Search Appointment" placeholder="جستجوی درخواست ها..." />
             <InputGroupAddon>
               <Search />
             </InputGroupAddon>
@@ -117,11 +117,11 @@ export function RequestList({ requests, selectedShipmentId, onSelectShipment }: 
         <ScrollArea className="h-0 flex-1">
           <div className="flex flex-col gap-4 px-4">
             {requests.map((request) => (
-              <ShipmentCard
-                active={request.id === selectedShipmentId}
+              <AppointmentCard
+                active={request.id === selectedAppointment}
                 key={request.id}
                 request={request}
-                onSelectShipment={onSelectShipment}
+                onSelectAppointment={onSelectAppointment}
               />
             ))}
           </div>

@@ -51,7 +51,7 @@ export const sidebarItems: NavGroup[] = [
       },
       {
         title: "مدیریت درخواست ها",
-        url: "/dashboard/logistics",
+        url: "/dashboard/manage-appointments",
         icon: Forklift,
       },
       {
