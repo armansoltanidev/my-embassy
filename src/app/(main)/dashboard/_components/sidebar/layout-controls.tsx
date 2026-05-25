@@ -118,12 +118,12 @@ export function LayoutControls() {
       <PopoverContent align="end">
         <div className="flex flex-col gap-5">
           <div className="space-y-1.5">
-            <h4 className="font-medium text-sm leading-none">Preferences</h4>
-            <p className="text-muted-foreground text-xs">Customize your dashboard layout preferences.</p>
+            <h4 className="font-medium text-sm leading-none">تنظیمات پنل</h4>
+            <p className="text-muted-foreground text-xs">در اینجا میتوانید تنظیمات پنل را شخصی سازی کنید</p>
           </div>
           <div className="space-y-3 **:data-[slot=toggle-group]:w-full **:data-[slot=toggle-group-item]:flex-1 **:data-[slot=toggle-group-item]:text-xs">
             <div className="space-y-1">
-              <Label className="font-medium text-xs">Theme Preset</Label>
+              <Label className="font-medium text-xs">مجموعه تم ها</Label>
               <Select
                 items={themePresetItems}
                 value={themePreset}
@@ -157,7 +157,7 @@ export function LayoutControls() {
             </div>
 
             <div className="space-y-1">
-              <Label className="font-medium text-xs">Fonts</Label>
+              <Label className="font-medium text-xs">فونت ها</Label>
               <Select
                 items={fontItems}
                 value={font}
@@ -182,7 +182,7 @@ export function LayoutControls() {
             </div>
 
             <div className="space-y-1">
-              <Label className="font-medium text-xs">Theme Mode</Label>
+              <Label className="font-medium text-xs">حالت روز/ شب</Label>
               <ToggleGroup
                 size="sm"
                 variant="outline"
@@ -194,19 +194,19 @@ export function LayoutControls() {
                 }}
               >
                 <ToggleGroupItem value="light" aria-label="Toggle light">
-                  Light
+                  روز
                 </ToggleGroupItem>
                 <ToggleGroupItem value="dark" aria-label="Toggle dark">
-                  Dark
+                  شب
                 </ToggleGroupItem>
                 <ToggleGroupItem value="system" aria-label="Toggle system">
-                  System
+                  سیستم
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="font-medium text-xs">Page Layout</Label>
+              <Label className="font-medium text-xs">تنظیمات صفحات</Label>
               <ToggleGroup
                 size="sm"
                 variant="outline"
@@ -218,16 +218,16 @@ export function LayoutControls() {
                 }}
               >
                 <ToggleGroupItem value="centered" aria-label="Toggle centered">
-                  Centered
+                  وسط صفحه
                 </ToggleGroupItem>
                 <ToggleGroupItem value="full-width" aria-label="Toggle full-width">
-                  Full Width
+                  تمام عرض
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="font-medium text-xs">Navbar Behavior</Label>
+              <Label className="font-medium text-xs">تنظیمات navbar</Label>
               <ToggleGroup
                 size="sm"
                 variant="outline"
@@ -239,16 +239,16 @@ export function LayoutControls() {
                 }}
               >
                 <ToggleGroupItem value="sticky" aria-label="Toggle sticky">
-                  Sticky
+                  چسپیده
                 </ToggleGroupItem>
                 <ToggleGroupItem value="scroll" aria-label="Toggle scroll">
-                  Scroll
+                  پیمایشی
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="font-medium text-xs">Sidebar Style</Label>
+              <Label className="font-medium text-xs">سایدبار</Label>
               <ToggleGroup
                 size="sm"
                 variant="outline"
@@ -260,19 +260,19 @@ export function LayoutControls() {
                 }}
               >
                 <ToggleGroupItem value="inset" aria-label="Toggle inset">
-                  Inset
+                  تنظیم شده
                 </ToggleGroupItem>
                 <ToggleGroupItem value="sidebar" aria-label="Toggle sidebar">
-                  Sidebar
+                  سایدبار
                 </ToggleGroupItem>
                 <ToggleGroupItem value="floating" aria-label="Toggle floating">
-                  Floating
+                  شناور
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <div className="space-y-1">
-              <Label className="font-medium text-xs">Sidebar Collapse Mode</Label>
+              <Label className="font-medium text-xs">بسته شده سایدبار</Label>
               <ToggleGroup
                 size="sm"
                 variant="outline"
@@ -284,16 +284,16 @@ export function LayoutControls() {
                 }}
               >
                 <ToggleGroupItem value="icon" aria-label="Toggle icon">
-                  Icon
+                  آیکون
                 </ToggleGroupItem>
                 <ToggleGroupItem value="offcanvas" aria-label="Toggle offcanvas">
-                  OffCanvas
+                  مخفی
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
 
             <Button type="button" size="sm" variant="outline" className="w-full text-xs" onClick={handleRestore}>
-              Restore Defaults
+              بازگشت به پیشفرض
             </Button>
           </div>
         </div>
