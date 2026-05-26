@@ -60,21 +60,20 @@ export const APPOINTMENT_OPTIONS: AppointmentOption[] = [
     icon: <PlaneTakeoff aria-hidden className="size-4" />,
     disabled: true,
   },
+  {
+    id: 6,
+    title: "ثبت‌نام سند رفت و برگشت",
+    description: "سند رفت و برگشت ویژه محصلان و دانشجویان مقیم ایران",
+    value: "students_visa",
+    icon: <PlaneTakeoff aria-hidden className="size-4" />,
+    disabled: false,
+  },
 ];
 
 export const STEP_FIELD_MAP: Array<Array<keyof AppointmentFormValues>> = [
   ["firstName", "lastName", "gender", "idDocumentType"],
   ["appointmentType"],
-  [
-    "idDocumentNumber",
-    "phoneNumber",
-    "idDocumentType",
-    "idDocumentNumber",
-    "relationDocumentNumber",
-    "relationFirstNameLastName",
-    "relationPhoneNumber",
-    "familyRelation",
-  ],
+  [],
   [],
 ];
 
@@ -84,6 +83,7 @@ export const APPOINTMENT_TYPE_LABELS: Record<string, string> = {
   marriage_document: "درخواست عقدنامه (نکاح خط)",
   passport_conversion: "طرح تبدیل پاسپورت دست‌نویس به الکترونیکی",
   hajj_registration: "ثبت‌نام حج",
+  students_visa: "سند رفت و برگشت دانشجویان",
 };
 
 export const FAMILY_RELATION_LABELS: Record<string, string> = {
@@ -107,3 +107,90 @@ export const ID_DOCUMENT_LABELS: Record<string, string> = {
   residence_booklet: "دفترچه اقامت",
   tazkira: "تذکره",
 };
+
+export const UNIVERSITY_TYPE_LABELS: Record<string, string> = {
+  azad: "آزاد",
+  state: "دولتی",
+  payame_noor: "پیام نور",
+  applied_science: "علمی کاربردی",
+  international: "بین‌المللی",
+  other: "سایر",
+};
+
+export const EDUCATIONAL_STATUS_LABELS: Record<string, string> = {
+  student: "دانشجو",
+  graduate: "فارغ‌التحصیل",
+  dropped_out: "انصرافی",
+  other: "سایر",
+};
+
+export const UNIVERSITY_DEGREE_LABELS: Record<string, string> = {
+  associate: "کاردانی",
+  bachelor: "کارشناسی",
+  master: "کارشناسی ارشد",
+  phd: "دکتری",
+  other: "سایر",
+};
+
+// Mapping of appointment type to additional fields required per step.
+// This allows dynamic rendering and validation based on the selected appointment type.
+// Each entry is an array indexed by step index (0-based), containing arrays of `AppointmentFormValues` keys that are relevant for that step and appointment type.
+
+// Per-appointment-type additional fields per step.
+// Each entry is an array indexed by step index (0-based), with arrays of `AppointmentFormValues` keys.
+export const APPOINTMENT_TYPE_STEP_FIELDS: Record<string, Array<Array<keyof AppointmentFormValues>>> = {
+  passport_issuance: [[], [], ["idDocumentNumber", "phoneNumber", "fatherName", "grandFatherName"], []],
+  identity_verification: [
+    [],
+    [],
+    [
+      "idDocumentNumber",
+      "phoneNumber",
+      "idDocumentType",
+      "idDocumentNumber",
+      "relationDocumentNumber",
+      "relationFirstNameLastName",
+      "relationPhoneNumber",
+      "familyRelation",
+      "fatherName",
+      "grandFatherName",
+    ],
+    [],
+  ],
+  students_visa: [
+    [],
+    [],
+    [
+      "idDocumentNumber",
+      "phoneNumber",
+      "idDocumentType",
+      "idDocumentNumber",
+      "relationDocumentNumber",
+      "relationFirstNameLastName",
+      "relationPhoneNumber",
+      "familyRelation",
+      "fatherName",
+      "grandFatherName",
+      "universityName",
+      "universityDegree",
+      "fieldOfStudy",
+      "educationalStatus",
+      "studentIdNumber",
+      "universityType",
+    ],
+    [],
+  ],
+};
+
+// Helper to get the fields to render/validate for a given step and appointment type.
+export function getStepFields(
+  appointmentType: string | undefined,
+  stepIndex: number,
+): Array<keyof AppointmentFormValues> {
+  const base = STEP_FIELD_MAP[stepIndex] ?? [];
+  const typeMap = appointmentType ? APPOINTMENT_TYPE_STEP_FIELDS[appointmentType] : undefined;
+  const extras = typeMap?.[stepIndex] ?? [];
+  // Merge keeping order and uniqueness.
+  const merged = [...base, ...extras];
+  return Array.from(new Set(merged));
+}

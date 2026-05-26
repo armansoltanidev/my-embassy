@@ -10,6 +10,7 @@ const APPOINTMENT_TYPE_VALUES = [
   "passport_conversion",
   "marriage_document",
   "identity_verification",
+  "students_visa",
 ] as const;
 
 const FAMILY_RELATION_VALUES = [
@@ -22,9 +23,17 @@ const FAMILY_RELATION_VALUES = [
   "cousin_son",
 ] as const;
 
+const UNIVERSITY_TYPE_VALUES = ["azad", "state", "payame_noor", "applied_science", "international", "other"] as const;
+
+const EDUCATIONAL_STATUS_VALUES = ["student", "graduate", "dropped_out", "other"] as const;
+
+const UNIVERSITY_DEGREE_VALUES = ["associate", "bachelor", "master", "phd", "other"] as const;
+
 export const appointmentFormSchema = z.object({
   firstName: z.string().min(1, "نام متقاضی را وارد کنید."),
   lastName: z.string().min(1, "نام خانوادگی متقاضی را وارد کنید."),
+  fatherName: z.string().min(1, "نام پدر خود را وارد کنید"),
+  grandFatherName: z.string().min(1, "نام پدربزرگ خود را وارد کنید"),
   gender: z
     .union([z.enum(GENDER_VALUES), z.literal("")])
     .refine((v): v is (typeof GENDER_VALUES)[number] => GENDER_VALUES.includes(v as never), {
@@ -43,6 +52,12 @@ export const appointmentFormSchema = z.object({
   relationPhoneNumber: z.string().min(10, "لطفا حداقل ده رقم وارد نمایید"),
   appointmentType: z.enum(APPOINTMENT_TYPE_VALUES),
   familyRelation: z.enum(FAMILY_RELATION_VALUES),
+  universityName: z.string().min(1, "لطفا نام دانشگاه را وارد نمایید"),
+  universityType: z.enum(UNIVERSITY_TYPE_VALUES),
+  studentIdNumber: z.string().min(1, "لطفا نام دانشگاه را وارد نمایید"),
+  educationalStatus: z.enum(EDUCATIONAL_STATUS_VALUES),
+  fieldOfStudy: z.string().min(1, "لطفا نام دانشگاه را وارد نمایید"),
+  universityDegree: z.enum(UNIVERSITY_DEGREE_VALUES),
 });
 
 export type AppointmentFormValues = z.infer<typeof appointmentFormSchema>;

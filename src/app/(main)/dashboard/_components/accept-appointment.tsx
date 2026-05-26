@@ -34,7 +34,7 @@ export default function AcceptAppointment() {
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="name-1">شماره پیگیری</FieldLabel>
-                <Input id="name-1" name="name" placeholder="#12473638238" />
+                <Input id="name-1" name="name" placeholder="12473638238" />
               </Field>
             </FieldGroup>
             <DialogFooter>

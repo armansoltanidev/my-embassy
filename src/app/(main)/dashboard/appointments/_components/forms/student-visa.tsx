@@ -8,9 +8,16 @@ import { Separator } from "@/components/ui/separator";
 
 import { identityVerificationAlerts } from "../../data-alert";
 import type { AppointmentFormValues } from "../../schema";
-import { FAMILY_RELATION_LABELS, GENDER_LABELS, ID_DOCUMENT_LABELS } from "../constants";
+import {
+  EDUCATIONAL_STATUS_LABELS,
+  FAMILY_RELATION_LABELS,
+  GENDER_LABELS,
+  ID_DOCUMENT_LABELS,
+  UNIVERSITY_DEGREE_LABELS,
+  UNIVERSITY_TYPE_LABELS,
+} from "../constants";
 
-export function IdentityVerificationForm() {
+export function StudentVisaForm() {
   const { control } = useFormContext<AppointmentFormValues>();
 
   return (
@@ -63,7 +70,7 @@ export function IdentityVerificationForm() {
                 {...field}
                 id="father-name"
                 aria-invalid={fieldState.invalid}
-                placeholder="آرمان"
+                placeholder="صبــور"
                 autoComplete="off"
               />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
@@ -81,7 +88,7 @@ export function IdentityVerificationForm() {
                 {...field}
                 id="grand-father-name"
                 aria-invalid={fieldState.invalid}
-                placeholder="سلطانی"
+                placeholder="ســـلطانی"
                 autoComplete="off"
               />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
@@ -254,6 +261,135 @@ export function IdentityVerificationForm() {
                 autoComplete="off"
               />
               <FieldDescription>شماره تماس در دسترس باشد تا در صورت نیاز بتوان تماس گرفت.</FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+      </FieldGroup>
+      <Separator />
+      <p className="text-lg">اطلاعات تحصیلی شما</p>
+      <FieldGroup className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Controller
+          name="universityName"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="rel_first_name_last_name">نام دانشگاه محل تحصیل</FieldLabel>
+              <Input
+                {...field}
+                id="rel_first_name_last_name"
+                aria-invalid={fieldState.invalid}
+                placeholder="نام دانشگاه"
+                autoComplete="off"
+              />
+              <FieldDescription>مثلا: دانشگاه شهید بهشتی</FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+        <Controller
+          name="universityType"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="rel_type">نوع دانشگاه محل تحصیل</FieldLabel>
+              <Select name={field.name} value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger id="rel_type" aria-invalid={fieldState.invalid}>
+                  <SelectValue>{UNIVERSITY_TYPE_LABELS[field.value] ?? "انتخاب کنید"}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.entries(UNIVERSITY_TYPE_LABELS).map(([value, label]) => (
+                    <SelectItem key={value} value={value}>
+                      {label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FieldDescription>لطفا نوع دانشگاه محل تحصیل خود را وارد کنید</FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+        <Controller
+          name="studentIdNumber"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="rel_document_id_number">شماره دانشجویی</FieldLabel>
+              <Input
+                {...field}
+                id="rel_document_id_number"
+                aria-invalid={fieldState.invalid}
+                placeholder="شماره دانشجویی"
+                autoComplete="off"
+              />
+              <FieldDescription>لطفا شماره دانشجویی خود را وارد نمایید</FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+        <Controller
+          name="educationalStatus"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="rel_type">وضعیت تحصیل</FieldLabel>
+              <Select name={field.name} value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger id="rel_type" aria-invalid={fieldState.invalid}>
+                  <SelectValue>{EDUCATIONAL_STATUS_LABELS[field.value] ?? "انتخاب کنید"}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.entries(EDUCATIONAL_STATUS_LABELS).map(([value, label]) => (
+                    <SelectItem key={value} value={value}>
+                      {label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FieldDescription>لطفا وضعیت تحصیلی خود را انتخاب کنید</FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+      </FieldGroup>
+      <FieldGroup className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Controller
+          name="fieldOfStudy"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="rel_document_id_number">رشته تحصیلی</FieldLabel>
+              <Input
+                {...field}
+                id="rel_document_id_number"
+                aria-invalid={fieldState.invalid}
+                placeholder="رشته تحصیلی"
+                autoComplete="off"
+              />
+              <FieldDescription>مثلا مهندسی نرم افزار</FieldDescription>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+        <Controller
+          name="universityDegree"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="rel_type">مقطع تحصیلی</FieldLabel>
+              <Select name={field.name} value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger id="rel_type" aria-invalid={fieldState.invalid}>
+                  <SelectValue>{UNIVERSITY_DEGREE_LABELS[field.value] ?? "انتخاب کنید"}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.entries(UNIVERSITY_DEGREE_LABELS).map(([value, label]) => (
+                    <SelectItem key={value} value={value}>
+                      {label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FieldDescription>لطفا مقطع تحصیلی خود را انتخاب کنید</FieldDescription>
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}

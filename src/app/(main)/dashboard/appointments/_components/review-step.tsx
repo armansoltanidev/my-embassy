@@ -1,7 +1,15 @@
 import { useFormContext } from "react-hook-form";
 
 import type { AppointmentFormValues } from "../schema";
-import { APPOINTMENT_TYPE_LABELS, FAMILY_RELATION_LABELS, GENDER_LABELS, ID_DOCUMENT_LABELS } from "./constants";
+import {
+  APPOINTMENT_TYPE_LABELS,
+  EDUCATIONAL_STATUS_LABELS,
+  FAMILY_RELATION_LABELS,
+  GENDER_LABELS,
+  ID_DOCUMENT_LABELS,
+  UNIVERSITY_DEGREE_LABELS,
+  UNIVERSITY_TYPE_LABELS,
+} from "./constants";
 
 interface ReviewField {
   label: string;
@@ -15,6 +23,14 @@ export function ReviewStep() {
   const reviewFields: ReviewField[] = [
     { label: "نام", value: values.firstName },
     { label: "نام خانوادگی", value: values.lastName },
+    {
+      label: "نام پدر",
+      value: values.fatherName,
+    },
+    {
+      label: "نام پدر بزرگ(پدر کلان)",
+      value: values.grandFatherName,
+    },
     {
       label: "جنسیت",
       value: GENDER_LABELS[values.gender] ?? "-",
@@ -39,6 +55,29 @@ export function ReviewStep() {
     },
     { label: "شماره تلفن فرد مرتبط", value: values.relationPhoneNumber },
     { label: "شماره مدرک فرد مرتبط", value: values.relationDocumentNumber },
+
+    { label: "ایمیل", value: values.email },
+
+    { label: "نام دانشگاه", value: values.universityName },
+
+    {
+      label: "نوع دانشگاه",
+      value: values.universityType ? UNIVERSITY_TYPE_LABELS[values.universityType] : "-",
+    },
+
+    { label: "شماره دانشجویی", value: values.studentIdNumber },
+
+    {
+      label: "وضعیت تحصیلی",
+      value: values.educationalStatus ? EDUCATIONAL_STATUS_LABELS[values.educationalStatus] : "-",
+    },
+
+    { label: "رشته تحصیلی", value: values.fieldOfStudy },
+
+    {
+      label: "مدرک دانشگاهی",
+      value: values.universityDegree ? UNIVERSITY_DEGREE_LABELS[values.universityDegree] : "-",
+    },
   ];
 
   return (

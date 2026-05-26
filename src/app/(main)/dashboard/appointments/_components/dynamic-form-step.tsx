@@ -4,6 +4,7 @@ import type { AppointmentFormValues } from "../schema";
 import { IdentityVerificationForm } from "./forms/identity_verification";
 import { MarriageDocumentForm } from "./forms/marriage_document";
 import { RequestPassportForm } from "./forms/request-passport";
+import { StudentVisaForm } from "./forms/student-visa";
 
 const FORM_MAP: Record<AppointmentFormValues["appointmentType"], React.ComponentType<Record<string, never>>> = {
   passport_issuance: RequestPassportForm,
@@ -11,6 +12,7 @@ const FORM_MAP: Record<AppointmentFormValues["appointmentType"], React.Component
   hajj_registration: RequestPassportForm,
   identity_verification: IdentityVerificationForm,
   marriage_document: MarriageDocumentForm,
+  students_visa: StudentVisaForm,
 };
 
 export function DynamicFormStep() {

@@ -14,7 +14,7 @@ import { Stepper, StepperContent, StepperPanel } from "@/components/ui/stepper";
 import { appointmentFormSchema } from "../schema";
 import type { AppointmentFormValues } from "../types";
 import { AppointmentTypeStep } from "./appointment-step";
-import { STEP_FIELD_MAP, WIZARD_STEPS } from "./constants";
+import { getStepFields, STEP_FIELD_MAP, WIZARD_STEPS } from "./constants";
 import { DynamicFormStep } from "./dynamic-form-step";
 import { IdentityStep } from "./identity-step";
 import { ReviewStep } from "./review-step";
@@ -31,21 +31,31 @@ export function AppointmentForm() {
     defaultValues: {
       firstName: "",
       lastName: "",
-      gender: "",
-      idDocumentType: "",
+      fatherName: "",
+      grandFatherName: "",
+      gender: "male",
+      idDocumentType: "amayesh_card",
       idDocumentNumber: "",
       phoneNumber: "",
       relationDocumentNumber: "",
       relationFirstNameLastName: "",
       relationPhoneNumber: "",
-      appointmentType: "passport_issuance",
+      appointmentType: "identity_verification",
       familyRelation: "father",
+      universityName: "",
+      universityType: "azad",
+      studentIdNumber: "",
+      educationalStatus: "student",
+      fieldOfStudy: "",
+      universityDegree: "associate",
+      email: "",
     },
   });
 
   const handleNext = async () => {
-    const fields = STEP_FIELD_MAP[currentStep - 1] as (keyof AppointmentFormValues)[];
-    const isValid = await form.trigger(fields);
+    const appointmentType = form.getValues("appointmentType");
+    const fields = getStepFields(appointmentType, currentStep - 1);
+    const isValid = await form.trigger(fields as (keyof AppointmentFormValues)[]);
     if (isValid) setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS));
   };
 
