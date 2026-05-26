@@ -11,12 +11,12 @@ import { Input } from "@/components/ui/input";
 
 const formSchema = z
   .object({
-    email: z.string().email({ message: "Please enter a valid email address." }),
-    password: z.string().min(6, { message: "Password must be at least 6 characters." }),
-    confirmPassword: z.string().min(6, { message: "Confirm Password must be at least 6 characters." }),
+    email: z.string().email({ message: "لطفا یک ایمیل معتبر وارد نمایید" }),
+    password: z.string().min(6, { message: "لطفا یک کلمه عبور حداقل 6 رقمی وارد نمایید" }),
+    confirmPassword: z.string().min(6, { message: "تایید کلمه عبور حداقل باید 6 رقم وارد نمایید" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match.",
+    message: "کلمه عبور ها یکسان نیستند",
     path: ["confirmPassword"],
   });
 
@@ -48,7 +48,7 @@ export function RegisterForm() {
           name="email"
           render={({ field, fieldState }) => (
             <Field className="gap-1.5" data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="register-email">Email Address</FieldLabel>
+              <FieldLabel htmlFor="register-email">ایمیل</FieldLabel>
               <Input
                 {...field}
                 id="register-email"
@@ -66,7 +66,7 @@ export function RegisterForm() {
           name="password"
           render={({ field, fieldState }) => (
             <Field className="gap-1.5" data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="register-password">Password</FieldLabel>
+              <FieldLabel htmlFor="register-password">کلمه عبور</FieldLabel>
               <Input
                 {...field}
                 id="register-password"
@@ -84,7 +84,7 @@ export function RegisterForm() {
           name="confirmPassword"
           render={({ field, fieldState }) => (
             <Field className="gap-1.5" data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="register-confirm-password">Confirm Password</FieldLabel>
+              <FieldLabel htmlFor="register-confirm-password">تایید کلمه عبور</FieldLabel>
               <Input
                 {...field}
                 id="register-confirm-password"
@@ -99,7 +99,7 @@ export function RegisterForm() {
         />
       </FieldGroup>
       <Button className="w-full" type="submit">
-        Register
+        ثبــت نام
       </Button>
     </form>
   );

@@ -13,21 +13,17 @@ export default function Layout({ children }: Readonly<{ children: ReactNode }>) 
           <div className="absolute top-10 space-y-1 px-10 text-primary-foreground">
             <Command className="size-10" />
             <h1 className="font-medium text-2xl">{APP_CONFIG.name}</h1>
-            <p className="text-sm">Design. Build. Launch. Repeat.</p>
+            <p className="text-muted-foreground text-sm">مدیریت تمام امور اداری به راحتی با سفارت من</p>
           </div>
 
           <div className="absolute bottom-10 flex w-full justify-between px-10">
             <div className="flex-1 space-y-1 text-primary-foreground">
-              <h2 className="font-medium">Ready to launch?</h2>
-              <p className="text-sm">Clone the repo, install dependencies, and your dashboard is live in minutes.</p>
-            </div>
-            <Separator orientation="vertical" className="mx-3 h-auto!" />
-            <div className="flex-1 space-y-1 text-primary-foreground">
-              <h2 className="font-medium">Need help?</h2>
+              <h2 className="font-medium">نیاز به کمک دارید؟</h2>
               <p className="text-sm">
-                Check out the docs or open an issue on GitHub, community support is just a click away.
+                با ورود به سایت پشتیبانی تیکت خود را ثبت نمایید، همکاران ما در اسرع وقت بررسی لازم را انجام خواهند داد.
               </p>
             </div>
+            <Separator orientation="vertical" className="mx-3 h-auto!" />
           </div>
         </div>
         <div className="relative order-1 flex h-full">{children}</div>

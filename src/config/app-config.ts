@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 export const APP_CONFIG = {
   name: "سفارت من",
   version: packageJson.version,
-  copyright: `© ${currentYear}, My Embassy. All rights reserved.`,
+  copyright: `© ${currentYear} My Embassy. All rights reserved`,
   meta: {
     title: "سفارت من",
     description:

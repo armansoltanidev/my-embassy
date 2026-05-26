@@ -47,7 +47,7 @@ function AppointmentCard({ request, active, onSelectAppointment }: AppointmentCa
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-2">
-          <span className="text-xs text-muted-foreground">نوع نوبت:</span>
+          <span className="text-muted-foreground text-xs">نوع نوبت:</span>
           <p className="text-sm">{request.appointment_type.label}</p>
         </div>
         <p className="text-lg">{request.tracking_number}</p>
@@ -69,7 +69,7 @@ function AppointmentCard({ request, active, onSelectAppointment }: AppointmentCa
       </div>
 
       <div className="flex items-center justify-between">
-        <p className="text-xs text-muted-foreground">تاریخ نوبت:</p>
+        <p className="text-muted-foreground text-xs">تاریخ نوبت:</p>
         <p>{request.appointmnet_time}</p>
       </div>
     </button>

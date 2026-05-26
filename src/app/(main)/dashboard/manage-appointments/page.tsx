@@ -4,5 +4,9 @@ import { Appointments } from "./_components/appointments";
 import "@/styles/flag-icons/flags.css";
 
 export default function Page() {
-  return <Appointments />;
+  return (
+    <div className="flex flex-col gap-4 md:gap-6">
+      <Appointments />
+    </div>
+  );
 }
