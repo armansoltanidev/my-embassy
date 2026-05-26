@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
 import type { AppointmentFormValues } from "../schema";
-import { APPOINTMENT_TYPE_LABELS, GENDER_LABELS, ID_DOCUMENT_LABELS } from "./constants";
+import { APPOINTMENT_TYPE_LABELS, FAMILY_RELATION_LABELS, GENDER_LABELS, ID_DOCUMENT_LABELS } from "./constants";
 
 interface ReviewField {
   label: string;
@@ -27,13 +27,23 @@ export function ReviewStep() {
       label: "نوع نوبت",
       value: APPOINTMENT_TYPE_LABELS[values.appointmentType] ?? "-",
     },
-    { label: "ایمیل", value: values.email },
-    { label: "شماره تلفن", value: values.phone },
+    { label: "شماره تلفن", value: values.phoneNumber },
+    { label: "شماره مدرک شناسایی", value: values.idDocumentNumber },
+    {
+      label: "نام و نام خانوادگی فرد مرتبط",
+      value: values.relationFirstNameLastName,
+    },
+    {
+      label: "نسبت شما با فرد مرتبط",
+      value: FAMILY_RELATION_LABELS[values.familyRelation] ?? "-",
+    },
+    { label: "شماره تلفن فرد مرتبط", value: values.relationPhoneNumber },
+    { label: "شماره مدرک فرد مرتبط", value: values.relationDocumentNumber },
   ];
 
   return (
     <div className="rounded-3xl border border-border bg-muted/10 p-6 text-muted-foreground text-sm">
-      <h2 className="mb-4 text-lg font-semibold text-foreground">بازبینی اطلاعات</h2>
+      <h2 className="mb-4 font-semibold text-foreground text-lg">بازبینی اطلاعات</h2>
       <dl className="grid gap-4 sm:grid-cols-2">
         {reviewFields.map(({ label, value }) => (
           <div key={label}>

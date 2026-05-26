@@ -147,7 +147,6 @@ export default function AlertList({ alerts, className }: AlertListProps) {
                     className={alertBadgeVariants({ variant })}
                     variant="outline"
                   >
-                    <Earth data-icon="inline-start" />
                     {tag}
                   </Badge>
                 ))}

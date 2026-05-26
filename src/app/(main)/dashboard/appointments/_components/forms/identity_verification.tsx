@@ -6,9 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 
-import { indentityVerificationAlerts } from "../../data-alert";
+import { identityVerificationAlerts } from "../../data-alert";
 import type { AppointmentFormValues } from "../../schema";
-import { GENDER_LABELS, ID_DOCUMENT_LABELS } from "../constants";
+import { FAMILY_RELATION_LABELS, GENDER_LABELS, ID_DOCUMENT_LABELS } from "../constants";
 
 export function IdentityVerificationForm() {
   const { control } = useFormContext<AppointmentFormValues>();
@@ -17,24 +17,36 @@ export function IdentityVerificationForm() {
     <div className="space-y-6">
       <FieldGroup className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Controller
-          name="email"
+          name="firstName"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="email">نام</FieldLabel>
-              <Input {...field} id="email" aria-invalid={fieldState.invalid} placeholder="آرمان" autoComplete="off" />
+              <FieldLabel htmlFor="first_name">نام</FieldLabel>
+              <Input
+                {...field}
+                id="first_name"
+                aria-invalid={fieldState.invalid}
+                placeholder="آرمان"
+                autoComplete="off"
+              />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
 
         <Controller
-          name="phone"
+          name="lastName"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="phone">نام خانوادگی</FieldLabel>
-              <Input {...field} id="phone" aria-invalid={fieldState.invalid} placeholder="سلطانی" autoComplete="off" />
+              <FieldLabel htmlFor="last_name">نام خانوادگی</FieldLabel>
+              <Input
+                {...field}
+                id="last_name"
+                aria-invalid={fieldState.invalid}
+                placeholder="سلطانی"
+                autoComplete="off"
+              />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
@@ -91,14 +103,14 @@ export function IdentityVerificationForm() {
       </FieldGroup>
       <FieldGroup className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Controller
-          name="phone"
+          name="idDocumentNumber"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="phone">شماره مدرک شناسایی</FieldLabel>
+              <FieldLabel htmlFor="id_document_number">شماره مدرک شناسایی</FieldLabel>
               <Input
                 {...field}
-                id="phone"
+                id="id_document_number"
                 aria-invalid={fieldState.invalid}
                 placeholder="شماره مدرک"
                 autoComplete="off"
@@ -109,7 +121,7 @@ export function IdentityVerificationForm() {
           )}
         />
         <Controller
-          name="phone"
+          name="phoneNumber"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
@@ -128,21 +140,21 @@ export function IdentityVerificationForm() {
         />
       </FieldGroup>
       <Separator />
-      <AlertList className="grid-cols-1" alerts={indentityVerificationAlerts} />
+      <AlertList className="grid-cols-1" alerts={identityVerificationAlerts} />
       <Separator />
       <p className="text-lg">اطلاعات اقارب شما</p>
       <FieldGroup className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Controller
-          name="phone"
+          name="relationFirstNameLastName"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="phone">نام و نام خانوادگی </FieldLabel>
+              <FieldLabel htmlFor="rel_first_name_last_name">نام و نام خانوادگی </FieldLabel>
               <Input
                 {...field}
-                id="phone"
+                id="rel_first_name_last_name"
                 aria-invalid={fieldState.invalid}
-                placeholder="شماره مدرک"
+                placeholder="نام و نام خانوادگی"
                 autoComplete="off"
               />
               <FieldDescription>لطفاً شماره مدرک شناسایی خود را بدون فاصله وارد نمایید.</FieldDescription>
@@ -151,17 +163,17 @@ export function IdentityVerificationForm() {
           )}
         />
         <Controller
-          name="idDocumentType"
+          name="familyRelation"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="id-document-type">نسبت با شما</FieldLabel>
+              <FieldLabel htmlFor="rel_type">نسبت با شما</FieldLabel>
               <Select name={field.name} value={field.value} onValueChange={field.onChange}>
-                <SelectTrigger id="id-document-type" aria-invalid={fieldState.invalid}>
-                  <SelectValue>{ID_DOCUMENT_LABELS[field.value] ?? "انتخاب کنید"}</SelectValue>
+                <SelectTrigger id="rel_type" aria-invalid={fieldState.invalid}>
+                  <SelectValue>{FAMILY_RELATION_LABELS[field.value] ?? "انتخاب کنید"}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.entries(ID_DOCUMENT_LABELS).map(([value, label]) => (
+                  {Object.entries(FAMILY_RELATION_LABELS).map(([value, label]) => (
                     <SelectItem key={value} value={value}>
                       {label}
                     </SelectItem>
@@ -174,14 +186,14 @@ export function IdentityVerificationForm() {
           )}
         />
         <Controller
-          name="phone"
+          name="relationDocumentNumber"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="phone">شماره مدرک شناسایی</FieldLabel>
+              <FieldLabel htmlFor="rel_document_id_number">شماره مدرک شناسایی</FieldLabel>
               <Input
                 {...field}
-                id="phone"
+                id="rel_document_id_number"
                 aria-invalid={fieldState.invalid}
                 placeholder="شماره مدرک"
                 autoComplete="off"
@@ -192,14 +204,14 @@ export function IdentityVerificationForm() {
           )}
         />
         <Controller
-          name="phone"
+          name="relationPhoneNumber"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel htmlFor="phone">شماره تماس</FieldLabel>
+              <FieldLabel htmlFor="rel_phone_number">شماره تماس</FieldLabel>
               <Input
                 {...field}
-                id="phone"
+                id="rel_phone_number"
                 aria-invalid={fieldState.invalid}
                 placeholder="شماره تماس"
                 autoComplete="off"

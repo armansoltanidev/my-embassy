@@ -26,7 +26,7 @@ export const APPOINTMENT_OPTIONS: AppointmentOption[] = [
     description: "درخواست صدور پاسپورت برای افراد تجاری | سیاسی | معمولی",
     value: "passport_issuance",
     icon: <FilePen aria-hidden className="size-4" />,
-    disabled: false,
+    disabled: true,
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ export const APPOINTMENT_OPTIONS: AppointmentOption[] = [
     description: "عقد نامه رسمی سفارت جهت ارائه به مراجع",
     value: "marriage_document",
     icon: <CreditCardIcon aria-hidden className="size-4" />,
-    disabled: false,
+    disabled: true,
   },
   {
     id: 4,
@@ -50,7 +50,7 @@ export const APPOINTMENT_OPTIONS: AppointmentOption[] = [
     description: "تبدیل پاسپورت‌های دست‌نویس به پاسپورت‌های الکترونیکی",
     value: "passport_conversion",
     icon: <BookUser aria-hidden className="size-4" />,
-    disabled: false,
+    disabled: true,
   },
   {
     id: 5,
@@ -58,14 +58,23 @@ export const APPOINTMENT_OPTIONS: AppointmentOption[] = [
     description: "ثبت‌نام انجام فریضه دینی",
     value: "hajj_registration",
     icon: <PlaneTakeoff aria-hidden className="size-4" />,
-    disabled: false,
+    disabled: true,
   },
 ];
 
 export const STEP_FIELD_MAP: Array<Array<keyof AppointmentFormValues>> = [
   ["firstName", "lastName", "gender", "idDocumentType"],
   ["appointmentType"],
-  ["email", "phone"],
+  [
+    "idDocumentNumber",
+    "phoneNumber",
+    "idDocumentType",
+    "idDocumentNumber",
+    "relationDocumentNumber",
+    "relationFirstNameLastName",
+    "relationPhoneNumber",
+    "familyRelation",
+  ],
   [],
 ];
 
@@ -75,6 +84,16 @@ export const APPOINTMENT_TYPE_LABELS: Record<string, string> = {
   marriage_document: "درخواست عقدنامه (نکاح خط)",
   passport_conversion: "طرح تبدیل پاسپورت دست‌نویس به الکترونیکی",
   hajj_registration: "ثبت‌نام حج",
+};
+
+export const FAMILY_RELATION_LABELS: Record<string, string> = {
+  father: "پدر",
+  mother: "مادر",
+  brother: "برادر",
+  uncle: "عمو",
+  aunt: "عمه",
+  cousin_daughter: "دختر عمو/عمه",
+  cousin_son: "پسر عمو/عمه",
 };
 
 export const GENDER_LABELS: Record<string, string> = {
