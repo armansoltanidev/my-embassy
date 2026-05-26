@@ -31,7 +31,7 @@ export function ContactStep() {
         />
 
         <Controller
-          name="phone"
+          name="phoneNumber"
           control={control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
